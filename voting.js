@@ -63,7 +63,7 @@ const approval_voting = {
 const borda_voting = {
     vote: (candidates, position) => {
         candidates = candidates.map((c) => Math.abs(c - position));
-        const sorted = candidates.slice().sort();
+        const sorted = candidates.slice().sort((a, b) => a - b);
         return candidates.map((c) => candidates.length - sorted.indexOf(c));
     },
 
@@ -107,7 +107,7 @@ function intern(arr) {
 const hare_voting = {
     vote: (candidates, position) => {
         candidates = candidates.map((c) => Math.abs(c - position));
-        const sorted = candidates.slice().sort();
+        const sorted = candidates.slice().sort((a, b) => a - b);
         return intern(sorted.map((c) => candidates.indexOf(c)));
     },
 
